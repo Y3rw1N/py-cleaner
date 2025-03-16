@@ -15,6 +15,12 @@ ANDROID_APPS_TMP_DIRS = [
     "/sdcard/Android/data/*/cache/*"
 ]
 
+def count_temp_files():
+    count = 0
+    for paths in ANDROID_APPS_TMP_DIRS:
+        count += len(glob.glob(paths))
+    return count
+
 date = datetime.datetime.now().strftime("%d-%m-%y %H:%M")
 
 def anim(exc):
@@ -48,9 +54,13 @@ def cleaner():
 
 if __name__ == "__main__":
    if os.geteuid() != 0:
-        print("root only >:C")
-        exit(1)
+    print("root only >:C")
+    exit(1)
 
+   if count_temp_files == 0:
+    print("[\033[33m!\033[0m] No temporary files to clean. Exiting.")
+    exit(0)
+    
    thread_cleaner = threading.Thread(target=cleaner)
    thread_anim = threading.Thread(target=anim, args=(thread_cleaner,))
 
