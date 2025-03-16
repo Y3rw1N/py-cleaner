@@ -57,7 +57,7 @@ if __name__ == "__main__":
     print("root only >:C")
     exit(1)
 
-   if count_temp_files == 0:
+   if count_temp_files() == 0:
     print("[\033[33m!\033[0m] No temporary files to clean. Exiting.")
     exit(0)
     
