@@ -47,11 +47,15 @@ def cleaner():
 
 
 if __name__ == "__main__":
-    thread_cleaner = threading.Thread(target=cleaner)
-    thread_anim = threading.Thread(target=anim, args=(thread_cleaner,))
+   if os.geteuid() != 0:
+        print("root only >:C")
+        exit(1)
 
-    thread_cleaner.start()
-    thread_anim.start()
+   thread_cleaner = threading.Thread(target=cleaner)
+   thread_anim = threading.Thread(target=anim, args=(thread_cleaner,))
 
-    thread_cleaner.join()
-    thread_anim.join()
+   thread_cleaner.start()
+   thread_anim.start()
+   
+   thread_cleaner.join()
+   thread_anim.join()
