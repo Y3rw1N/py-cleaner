@@ -21,7 +21,7 @@ def count_temp_files():
         count += len(glob.glob(paths))
     return count
 
-date = datetime.datetime.now().strftime("%d-%m-%y %H:%M")
+date = datetime.datetime.now().strftime("%d-%m-%y-%H:%M")
 
 def anim(exc):
     while exc.is_alive():
@@ -34,9 +34,8 @@ def anim(exc):
 def log(message):
     log_dir = "/sdcard/pycleaner"
     os.makedirs(log_dir, exist_ok=True)
-    with open(os.path.join(log_dir, "log.txt"), "a", encoding="utf-8") as log_file:
+    with open(os.path.join(log_dir, f"{date}-log.txt"), "a", encoding="utf-8") as log_file:
         log_file.write(message + "\n")
-
 
 def cleaner():
     for paths in ANDROID_APPS_TMP_DIRS:
@@ -44,10 +43,10 @@ def cleaner():
             try:
                 if os.path.isfile(temp_path):
                     os.remove(temp_path)
-                    log(f"{date} deleting {temp_path}")
+                    log(f"deleting {temp_path}")
                 else:
                     shutil.rmtree(temp_path)
-                    log(f"{date} deleting {temp_path}")
+                    log(f"deleting {temp_path}")
             except Exception as e:
                 log(f"{date} [ERROR]: there was a problem trying to delete a file or directory: {e}")
 
