@@ -28,7 +28,7 @@ def anim(exc):
         for dots in ["", ".", "..", "..."]:
             print(f"\rCleaning apps{dots}", end="")
             sleep(0.3)
-        print("\rCleaning apps... done")
+        print("\rCleaning apps... done", end="")
 
 
 def log(message):
