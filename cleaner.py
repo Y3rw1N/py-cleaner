@@ -64,7 +64,8 @@ if __name__ == "__main__":
     exit(1)
 
    if android_api_level() < 21:
-        print("[\033[31m!\033[0m] you need android 5 or higher (API 21+)  ")
+        print("[\033[31m!\033[0m] you need android 5 or higher (API 21+)")
+        exit(1)
 
    thread_cleaner = threading.Thread(target=cleaner)
    thread_anim = threading.Thread(target=anim, args=(thread_cleaner,))
