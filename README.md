@@ -24,7 +24,7 @@ cd py-cleaner
 ``` bash
 chmod +x cleaner.py
 ```
-### 5. run the script
+### 5. Run the script
 ``` bash
 sudo python cleaner.py
 sudo ./cleaner.py   # If you gave it execution permissions
