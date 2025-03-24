@@ -8,18 +8,16 @@ import shutil
 import glob
 
 ANDROID_APPS_TMP_DIRS = [
+    "/storage/emulated/0/Android/data/*/cache/*",
     "/data/data/*/cache/*",
     "/data/data/*/code_cache/*",
-    "/data/user_de/*/*/cache/*",
-    "/data/user_de/*/*/code_cache/*",
-    "/sdcard/Android/data/*/cache/*"
+    "/data/user_de/0/*/cache/*",
+    "/data/user_de/0/*/code_cache/*",
+    "/data_mirror/data_de/null/0/*/cache/*",
+    "/data_mirror/data_de/null/0/*/code_cache/*",
+    "/data_mirror/data_ce/null/0/*/cache/*",
+    "/data_mirror/data_ce/null/0/*/code_cache/*"
 ]
-
-def count_temp_files():
-    count = 0
-    for paths in ANDROID_APPS_TMP_DIRS:
-        count += len(glob.glob(paths))
-    return count
 
 date = datetime.datetime.now().strftime("%d-%m-%y-%H:%M")
 
@@ -56,10 +54,6 @@ if __name__ == "__main__":
     print("root only >:C")
     exit(1)
 
-   if count_temp_files() == 0:
-    print("[\033[33m!\033[0m] No temporary files to clean. Exiting.")
-    exit(0)
-    
    thread_cleaner = threading.Thread(target=cleaner)
    thread_anim = threading.Thread(target=anim, args=(thread_cleaner,))
 
