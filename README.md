@@ -5,7 +5,7 @@
 Before installing py-cleaner, ensure you have Termux installed on your Android device. You can download it from:
 
 - [F-Droid](https://f-droid.org/packages/com.termux/)
-- [Github Releases](https://github.com/termux/termux-app)
+- [Termux](https://github.com/termux/termux-app)
 
 ## Installation Steps
 ### 1. Clone py-cleaner repository from GitHub
